@@ -1,0 +1,12 @@
+name: Run tests
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "DATABASE_URL=\"mysql://${{secrets.PSCALE_USERNAME}}:${{secrets.PSCALE_PASSWORD}}@${{secrets.PSCALE_HOST}}/${{secrets.PSCALE_DB}}?sslaccept=strict\"" > .env
+      - run: npm install
+      - run: npx prisma generate
+      - run: npm run seed
+      - run: npm test
