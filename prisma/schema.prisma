@@ -1,0 +1,46 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Claim {
+  id          Int       @id @default(autoincrement())
+  is_starred  Int
+  household   Household @relation(fields: [householdId], references: [id])
+  item        Item      @relation(fields: [itemId], references: [id])
+  householdId Int
+  itemId      Int
+}
+
+model Household {
+  id         Int     @id @default(autoincrement())
+  address    String  @db.VarChar(255)
+  star_limit Int?
+  members    User[]
+  claims     Claim[]
+}
+
+model Item {
+  id          Int     @id @default(autoincrement())
+  type        String  @db.VarChar(255)
+  length      Int?
+  width       Int?
+  height      Int?
+  name        String  @db.VarChar(255)
+  description String? @db.VarChar(255)
+  is_framed   Int?
+  claims      Claim[]
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  household   Household @relation(fields: [householdId], references: [id])
+  householdId Int
+}

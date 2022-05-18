@@ -2,19 +2,25 @@
   "name": "art-distribution",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node prisma/seed.js",
+    "test": "tap"
   },
   "dependencies": {
+    "@prisma/client": "^3.14.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },
   "devDependencies": {
     "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "prisma": "^3.14.0",
+    "tap": "^16.2.0"
   }
 }
