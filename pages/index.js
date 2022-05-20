@@ -5,7 +5,7 @@ export async function getServerSideProps() {
   const prisma = new PrismaClient();
   return {
     props: {
-      users: await prisma.User.findMany({ include: { household: true } }),
+      users: await prisma.user.findMany({ include: { household: true } }),
     },
   };
 }
