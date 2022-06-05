@@ -1,0 +1,9 @@
+#itemList {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	gap: 10px;
+}

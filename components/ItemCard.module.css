@@ -1,0 +1,41 @@
+.itemCard {
+	padding: 10px;
+	border-radius: 4px;
+	background-color: #eee;
+	display: grid;
+	grid-template:
+		"image"
+		"details"
+		"meta"
+		/ auto;
+	width: 320;
+	min-width: 0;
+	max-width: 320;
+}
+
+.itemCard .imageContainer {
+	width: 320;
+	height: 320;
+	max-width: 320;
+	max-height: 320;
+	grid-area: "image";
+}
+
+.itemCard img {
+	object-fit: cover;
+}
+
+.itemCard .details {
+	grid-area: "details";
+	max-width: 320px;
+}
+
+.itemCard p {
+	overflow-wrap: break-word;
+	hyphens: auto;
+}
+
+.itemCard .title {
+	font-weight: bold;
+	font-size: 20px;
+}

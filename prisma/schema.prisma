@@ -11,7 +11,7 @@ datasource db {
 
 model Claim {
   id          Int       @id @default(autoincrement())
-  is_starred  Int
+  isStarred   Int
   household   Household @relation(fields: [householdId], references: [id])
   item        Item      @relation(fields: [itemId], references: [id])
   householdId Int
@@ -19,23 +19,24 @@ model Claim {
 }
 
 model Household {
-  id         Int     @id @default(autoincrement())
-  address    String  @db.VarChar(255)
-  star_limit Int?
-  members    User[]
-  claims     Claim[]
+  id        Int     @id @default(autoincrement())
+  address   String  @db.VarChar(255)
+  starLimit Int?
+  members   User[]
+  claims    Claim[]
 }
 
 model Item {
-  id          Int     @id @default(autoincrement())
-  type        String  @db.VarChar(255)
-  length      Int?
-  width       Int?
-  height      Int?
-  name        String  @db.VarChar(255)
-  description String? @db.VarChar(255)
-  is_framed   Int?
-  claims      Claim[]
+  id            Int      @id @default(autoincrement())
+  name          String   @db.VarChar(255)
+  type          String   @db.VarChar(255)
+  imageFilename String   @db.VarChar(255)
+  description   String?  @db.VarChar(255)
+  isFramed      Boolean?
+  length        Int?
+  width         Int?
+  height        Int?
+  claims        Claim[]
 }
 
 model User {
