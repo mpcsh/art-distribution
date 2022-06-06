@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "seed": "node bin/seed.mjs",
     "test": "tap",
     "prepare": "husky install"
