@@ -2,10 +2,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-await prisma.Household.deleteMany({});
+await prisma.household.deleteMany({});
 await prisma.$queryRaw`ALTER TABLE Household AUTO_INCREMENT = 1`;
-await prisma.User.deleteMany({});
+await prisma.user.deleteMany({});
 await prisma.$queryRaw`ALTER TABLE User AUTO_INCREMENT = 1`;
+await prisma.item.deleteMany({});
+await prisma.$queryRaw`ALTER TABLE Item AUTO_INCREMENT = 1`;
 
 // households
 const elmSt = await prisma.household.create({

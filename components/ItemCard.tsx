@@ -1,7 +1,8 @@
+import { type Item } from "@prisma/client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { S3_PREFIX } from "../util/images";
+import { S3_PREFIX } from "../lib/constants";
 import styles from "./ItemCard.module.css";
 
 export default function ItemCard({
@@ -14,12 +15,12 @@ export default function ItemCard({
   length,
   width,
   height,
-}) {
+}: Item) {
   return (
     <div className={styles.itemCard}>
       <div className={styles.imageContainer}>
         <Image
-          alt={description}
+          alt={description ?? ""}
           width={320}
           height={320}
           src={`${S3_PREFIX}/${imageFilename}`}
