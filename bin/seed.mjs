@@ -49,26 +49,26 @@ const jennyDoeFawn = await prisma.user.create({
 const boldBrash = await prisma.item.create({
   data: {
     name: "Bold & Brash",
-    description: "The artist in the nude",
     type: "Painting",
+    imageFilename: "boldbrash.jpg",
+    description: "The artist in the nude",
     isFramed: true,
     length: 24,
     width: 24,
     height: null,
-    imageFilename: "boldbrash.jpg",
   },
 });
 
 const leapfrog = await prisma.item.create({
   data: {
     name: "Sponge and Squid playing leapfrog",
-    description: "Reclaimed paper",
     type: "Tchotchke",
-    isFramed: false,
+    imageFilename: "leapfrog.gif",
+    description: "Reclaimed paper",
+    isFramed: null,
     length: 6,
     width: 6,
     height: 6,
-    imageFilename: "leapfrog.gif",
   },
 });
 
