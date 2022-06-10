@@ -1,4 +1,4 @@
-import { PrismaClient, type Item, type User } from "@prisma/client";
+import { type Item, PrismaClient, type User } from "@prisma/client";
 import Head from "next/head";
 import { useState } from "react";
 

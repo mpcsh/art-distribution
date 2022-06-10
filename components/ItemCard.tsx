@@ -1,4 +1,4 @@
-import { type Item } from "@prisma/client";
+import type { Item } from "@prisma/client";
 import Image from "next/image";
 
 import { S3_PREFIX } from "../lib/constants";

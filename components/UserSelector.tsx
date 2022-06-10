@@ -1,4 +1,3 @@
-import { FormControl, FormHelperText, FormLabel } from "@chakra-ui/react";
 import {
 	AutoComplete,
 	AutoCompleteInput,
@@ -6,6 +5,8 @@ import {
 	AutoCompleteList,
 } from "@choc-ui/chakra-autocomplete";
 import { type User } from "@prisma/client";
+
+import { FormControl, FormHelperText, FormLabel } from "@chakra-ui/react";
 
 import { SetState } from "../lib/constants";
 

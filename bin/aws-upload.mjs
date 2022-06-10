@@ -1,5 +1,6 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-S3";
 import process from "process";
+
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-S3";
 import sharp from "sharp";
 
 const imageFilename = process.argv[2];

@@ -2,5 +2,11 @@
 	"printWidth": 100,
 	"useTabs": true,
 	"trailingComma": "all",
-	"bracketSameLine": true
+	"bracketSameLine": true,
+	"importOrder": ["<THIRD_PARTY_MODULES>", "^@chakra-ui/(.*)", "^[./]"],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+	"importOrderGroupNamespaceSpecifiers": true,
+	"importOrderMergeDuplicateImports": true,
+	"importOrderBuiltinModulesToTop": true
 }
