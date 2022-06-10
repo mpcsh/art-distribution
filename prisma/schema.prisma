@@ -27,16 +27,16 @@ model Household {
 }
 
 model Item {
-  id            Int      @id @default(autoincrement())
-  name          String   @db.VarChar(255)
-  type          String   @db.VarChar(255)
-  imageFilename String   @db.VarChar(255)
-  description   String?  @db.VarChar(255)
-  isFramed      Boolean?
-  length        Int?
-  width         Int?
-  height        Int?
-  claims        Claim[]
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  type        String   @db.VarChar(255)
+  imageName   String   @db.VarChar(255)
+  description String?  @db.VarChar(255)
+  isFramed    Boolean?
+  length      Int?
+  width       Int?
+  height      Int?
+  claims      Claim[]
 }
 
 model User {

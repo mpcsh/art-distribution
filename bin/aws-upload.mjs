@@ -1,16 +1,17 @@
+import path from "path";
 import process from "process";
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-S3";
 import sharp from "sharp";
 
-const imageFilename = process.argv[2];
-const imageName = imageFilename.split(".")[0];
+const imagePath = process.argv[2];
+const imageName = path.basename(imagePath).split(".")[0];
 
-const fullSize = await sharp(imageFilename)
+const fullSize = await sharp(imagePath)
 	.resize(2048, 2048, { fit: "outside" })
 	.toFormat("webp")
 	.toBuffer();
-const thumbnail = await sharp(imageFilename)
+const thumbnail = await sharp(imagePath)
 	.resize(512, 512, { fit: "cover" })
 	.toFormat("webp")
 	.toBuffer();

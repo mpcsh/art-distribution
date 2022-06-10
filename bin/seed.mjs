@@ -50,7 +50,7 @@ const boldBrash = await prisma.item.create({
 	data: {
 		name: "Bold & Brash",
 		type: "Painting",
-		imageFilename: "boldbrash.jpg",
+		imageName: "boldbrash",
 		description: "The artist in the nude",
 		isFramed: true,
 		length: 24,
@@ -63,7 +63,7 @@ const leapfrog = await prisma.item.create({
 	data: {
 		name: "Sponge and Squid playing leapfrog",
 		type: "Tchotchke",
-		imageFilename: "leapfrog.gif",
+		imageName: "leapfrog",
 		description: "Reclaimed paper",
 		isFramed: null,
 		length: 6,
@@ -76,7 +76,7 @@ const graph = await prisma.item.create({
 	data: {
 		name: "Look at this graph",
 		type: "Photograph",
-		imageFilename: "lookatthisgraph.png",
+		imageName: "lookatthisgraph",
 		description: "Bar chart, framed, originally held by Chad Kroeger",
 		isFramed: true,
 		length: 4,

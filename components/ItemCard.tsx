@@ -8,7 +8,7 @@ export default function ItemCard({
 	id,
 	name,
 	type,
-	imageFilename,
+	imageName,
 	description,
 	isFramed,
 	length,
@@ -22,7 +22,7 @@ export default function ItemCard({
 					alt={description ?? ""}
 					width={320}
 					height={320}
-					src={`${S3_PREFIX}/${imageFilename}`}
+					src={`${S3_PREFIX}/${imageName}.thumb.webp`}
 				/>
 			</div>
 			<div className={styles.details}>
