@@ -3,7 +3,9 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 
-import ItemCard from "../components/ItemCard";
+import { Container } from "@mui/material";
+
+import ItemList from "../components/ItemList";
 import UserSelector from "../components/UserSelector";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -29,14 +31,11 @@ export default function AppContainer({ items, users }: AppContainerProps) {
 			</Head>
 
 			<main>
-				{!user && <UserSelector users={users} setUser={setUser} />}
+				<Container>
+					{!user && <UserSelector users={users} setUser={setUser} />}
 
-				<h1>items</h1>
-				<div>
-					{items.map((item, i) => (
-						<ItemCard key={i} {...item} />
-					))}
-				</div>
+					<ItemList items={items} />
+				</Container>
 			</main>
 		</>
 	);
