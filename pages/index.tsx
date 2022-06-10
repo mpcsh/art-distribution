@@ -1,4 +1,5 @@
 import { type Item, PrismaClient, type User } from "@prisma/client";
+import { type GetServerSideProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -6,12 +7,12 @@ import ItemCard from "../components/ItemCard";
 import UserSelector from "../components/UserSelector";
 import styles from "./index.module.css";
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const prisma = new PrismaClient();
 	const items = await prisma.item.findMany({});
 	const users = await prisma.user.findMany({});
 	return { props: { items, users } };
-}
+};
 
 type AppContainerProps = {
 	items: Item[];
