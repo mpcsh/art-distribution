@@ -1,11 +1,10 @@
-import { type Item, PrismaClient, type User } from "@prisma/client";
-import { type GetServerSideProps } from "next";
+import { Item, PrismaClient, User } from "@prisma/client";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 
 import ItemCard from "../components/ItemCard";
 import UserSelector from "../components/UserSelector";
-import styles from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const prisma = new PrismaClient();
@@ -21,19 +20,19 @@ type AppContainerProps = {
 
 export default function AppContainer({ items, users }: AppContainerProps) {
 	const [user, setUser] = useState<User | null>(null);
-	console.log(user);
 
 	return (
 		<>
 			<Head>
 				<title>Art distribution</title>
+				<meta name="viewport" content="initial-scale=1, width=device-width" />
 			</Head>
 
-			<main id={styles.appContainer}>
+			<main>
 				{!user && <UserSelector users={users} setUser={setUser} />}
 
 				<h1>items</h1>
-				<div id={styles.itemList}>
+				<div>
 					{items.map((item, i) => (
 						<ItemCard key={i} {...item} />
 					))}

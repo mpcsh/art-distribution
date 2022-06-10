@@ -1,8 +1,7 @@
-import type { Item } from "@prisma/client";
+import { Item } from "@prisma/client";
 import Image from "next/image";
 
 import { S3_PREFIX } from "../lib/constants";
-import styles from "./ItemCard.module.css";
 
 export default function ItemCard({
 	id,
@@ -16,8 +15,8 @@ export default function ItemCard({
 	height,
 }: Item) {
 	return (
-		<div className={styles.itemCard}>
-			<div className={styles.imageContainer}>
+		<div>
+			<div>
 				<Image
 					alt={description ?? ""}
 					width={320}
@@ -25,9 +24,9 @@ export default function ItemCard({
 					src={`${S3_PREFIX}/${imageName}.thumb.webp`}
 				/>
 			</div>
-			<div className={styles.details}>
-				<p className={styles.title}>{name}</p>
-				{description ?? <p className={styles.description}>{description}</p>}
+			<div>
+				<p>{name}</p>
+				{description ?? <p>{description}</p>}
 			</div>
 		</div>
 	);

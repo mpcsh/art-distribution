@@ -3,7 +3,7 @@
 	"useTabs": true,
 	"trailingComma": "all",
 	"bracketSameLine": true,
-	"importOrder": ["<THIRD_PARTY_MODULES>", "^@chakra-ui/(.*)", "^[./]"],
+	"importOrder": ["<THIRD_PARTY_MODULES>", "^@mui/(.*)", "^[./]"],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true,
 	"importOrderGroupNamespaceSpecifiers": true,

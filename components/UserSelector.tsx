@@ -1,12 +1,14 @@
-import {
-	AutoComplete,
-	AutoCompleteInput,
-	AutoCompleteItem,
-	AutoCompleteList,
-} from "@choc-ui/chakra-autocomplete";
-import { type User } from "@prisma/client";
+import { User } from "@prisma/client";
+import { SyntheticEvent, useState } from "react";
 
-import { FormControl, FormHelperText, FormLabel } from "@chakra-ui/react";
+import {
+	Autocomplete,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	TextField,
+} from "@mui/material";
 
 import { SetState } from "../lib/constants";
 
@@ -16,28 +18,48 @@ type UserSelectorProps = {
 };
 
 export default function UserSelector({ users, setUser }: UserSelectorProps) {
-	function handleSelectUser(name: string) {
-		const user = users.find((u) => u.name === name);
-		if (!user) {
-			return;
-		}
-		setUser(user);
+	const [open, setOpen] = useState(true);
+
+	function handleSelectUser(event: SyntheticEvent, value: User) {
+		setUser(value);
+		setOpen(false);
 	}
 
 	return (
-		<FormControl>
-			<FormLabel htmlFor="userSelector">Please select your name.</FormLabel>
-			<AutoComplete openOnFocus={false} onChange={handleSelectUser}>
-				<AutoCompleteInput variant="filled" />
-				<AutoCompleteList>
-					{users.sort().map((item) => (
-						<AutoCompleteItem key={item.id} value={item.name}>
-							{item.name}
-						</AutoCompleteItem>
-					))}
-				</AutoCompleteList>
-			</AutoComplete>
-			<FormHelperText>If you do not see your name, send Harry a message.</FormHelperText>
-		</FormControl>
+		<Dialog open={open} fullWidth>
+			<DialogContent>
+				<DialogContentText>
+					Please select your name. Let Harry know if you&apos;re not on the list.
+				</DialogContentText>
+				<DialogActions>
+					<Autocomplete
+						disableClearable
+						autoHighlight
+						fullWidth
+						onChange={handleSelectUser}
+						options={users}
+						getOptionLabel={(user) => user.name}
+						renderInput={(params) => <TextField {...params} label="Name" />}
+					/>
+				</DialogActions>
+			</DialogContent>
+		</Dialog>
 	);
+
+	// return (
+	// 	<FormControl>
+	// 		<FormLabel htmlFor="userSelector">Please select your name.</FormLabel>
+	// 		<AutoComplete openOnFocus={false} onChange={handleSelectUser}>
+	// 			<AutoCompleteInput variant="filled" />
+	// 			<AutoCompleteList>
+	// 				{users.sort().map((item) => (
+	// 					<AutoCompleteItem key={item.id} value={item.name}>
+	// 						{item.name}
+	// 					</AutoCompleteItem>
+	// 				))}
+	// 			</AutoCompleteList>
+	// 		</AutoComplete>
+	// 		<FormHelperText>If you do not see your name, send Harry a message.</FormHelperText>
+	// 	</FormControl>
+	// );
 }
